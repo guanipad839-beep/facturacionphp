@@ -26,10 +26,9 @@ $stmt = $cliente->read();
     <style>
         body { background-color: #f8f9fa; }
         .sidebar { min-width: 250px; height: 100vh; background: #212529; color: white; position: sticky; top: 0; }
-        .nav-link { color: #ff0000; padding: 15px; transition: 0.3s; }
-        .nav-link:hover { color: white; background: #379bff; }
-        .nav-link.active { color: white; background: #310dfd; }
-        
+        .nav-link { color: #adbdae; padding: 15px; transition: 0.3s; }
+        .nav-link:hover { color: white; background: #000000; }
+        .nav-link.active { color: white; background: #000000; } 
     </style>
 </head>
 <body class="d-flex">
@@ -40,12 +39,12 @@ $stmt = $cliente->read();
         </div>
         <nav class="nav flex-column mt-3">
             <a class="nav-link active" href="../index.php"><i class="fas fa-tachometer me-2"></i> Dashboard</a>
-            <a class="nav-link active" href="../view/employee.php"><i class="fas fa-users me-2"></i> Empleados</a>
-            <a class="nav-link active" href="../view/cliente.php"><i class="fas fa-address-book me-2"></i> Clientes</a>
-            <a class="nav-link active" href="../view/inventario.php"><i class="fas fa-calculator me-2"></i> Inventarios</a>
-            <a class="nav-link active" href="../view/pedido.php"><i class="fas fa-square-poll-vertical me-2"></i> Pedidos</a>
-            <a class="nav-link active" href="../view/pago.php"><i class="fas fa-wallet me-2"></i> Pagos</a>
-            <a class="nav-link active" href="../view/garantia.php"><i class="fas fa-calendar me-2"></i> Garantias</a>
+            <a class="nav-link " href="../view/employee.php"><i class="fas fa-users me-2"></i> Empleados</a>
+            <a class="nav-link " href="../view/cliente.php"><i class="fas fa-address-book me-2"></i> Clientes</a>
+            <a class="nav-link " href="../view/inventario.php"><i class="fas fa-calculator me-2"></i> Inventarios</a>
+            <a class="nav-link " href="../view/pedido.php"><i class="fas fa-square-poll-vertical me-2"></i> Pedidos</a>
+            <a class="nav-link " href="../view/pago.php"><i class="fas fa-wallet me-2"></i> Pagos</a>
+            <a class="nav-link " href="../view/garantia.php"><i class="fas fa-calendar me-2"></i> Garantias</a>
             <a class="nav-link text-danger mt-5" href="controllers/AuthController.php?action=logout">
                 <i class="fas fa-sign-out-alt me-2"></i> Cerrar Sesión
             </a>
@@ -159,7 +158,7 @@ $stmt = $cliente->read();
                     if(!formData.has('status')) formData.append('status', '0');
 
                     try {
-                        const resp = await fetch('controllers/clienteController.php?action=save', {
+                        const resp = await fetch('../controllers/clienteController.php?action=save', {
                             method: 'POST',
                             body: formData
                         });
@@ -203,7 +202,7 @@ $stmt = $cliente->read();
                 confirmButtonText: 'Sí, eliminar'
             }).then(async (result) => {
                 if (result.isConfirmed) {
-                    const response = await fetch(`controllers/clienteController.php?action=delete&id=${id}`);
+                    const response = await fetch(`../controllers/clienteController.php?action=delete&id=${id}`);
                     const res = await response.json();
                     if (res.status === 'success') {
                         Swal.fire('¡Borrado!', 'El registro ha sido cliente.', 'success').then(() => location.reload());
