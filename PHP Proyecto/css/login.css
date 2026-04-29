@@ -1,0 +1,227 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --bg1: #230000;
+  --bg2: #5c0000;
+  --card: rgba(20, 0, 0, 0.72);
+  --stroke: rgba(255, 255, 255, 0.12);
+  --text: #f5d7d7;
+  --muted: #b98d8d;
+  --accent: #ff3b3b;
+  --accent2: #ff7777;
+  --shadow: 0 20px 60px rgba(0, 0, 0, 0.55);
+}
+
+body {
+  min-height: 100vh;
+  font-family: Arial, Helvetica, sans-serif;
+  background:
+    radial-gradient(circle at top, rgba(255, 0, 0, 0.2), transparent 30%),
+    linear-gradient(180deg, var(--bg2), var(--bg1));
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.wrapper {
+  width: 100%;
+  max-width: 450px; /* Ajustado para que el login se vea compacto */
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.login-card {
+  position: relative;
+  width: 100%;
+  background: linear-gradient(180deg, rgba(120, 0, 0, 0.25), rgba(10, 0, 0, 0.85));
+  border: 1px solid var(--stroke);
+  border-radius: 28px;
+  box-shadow: var(--shadow);
+  padding: 34px;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  overflow: hidden;
+}
+
+.login-card::before {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  background: radial-gradient(circle at top left, rgba(255,255,255,0.12), transparent 35%);
+  pointer-events: none;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 18px;
+}
+
+.brand h1 {
+  font-size: 28px;
+  letter-spacing: 1px;
+}
+
+.brand span {
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.eye-zone {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 28px;
+  gap: 10px;
+}
+
+.eye-wrap {
+  width: 140px;
+  height: 110px;
+  display: grid;
+  place-items: center;
+  animation: floaty 3s ease-in-out infinite;
+}
+
+@keyframes floaty {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+.eye-svg {
+  width: 130px;
+  height: 110px;
+  filter: drop-shadow(0 0 16px rgba(255, 80, 80, 0.18));
+}
+
+.tear-row {
+  display: flex;
+  gap: 14px;
+  margin-top: -10px;
+}
+
+.tear {
+  width: 12px;
+  height: 24px;
+  background: linear-gradient(180deg, var(--accent2), var(--accent));
+  border-radius: 50% 50% 60% 60%;
+  transform: rotate(10deg);
+  animation: drip 2.8s infinite ease-in-out;
+  opacity: 0.9;
+}
+
+@keyframes drip {
+  0%, 100% { transform: translateY(0) scaleY(1); opacity: 0.9; }
+  50% { transform: translateY(5px) scaleY(1.15); opacity: 0.7; }
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.field {
+  position: relative;
+}
+
+.field input {
+  width: 100%;
+  border: none;
+  outline: none;
+  background: rgba(255, 255, 255, 0.03);
+  border-bottom: 2px solid rgba(255, 255, 255, 0.16);
+  color: var(--text);
+  padding: 16px 16px 14px;
+  font-size: 16px;
+  border-radius: 14px 14px 0 0;
+  transition: 0.25s ease;
+}
+
+.field input::placeholder {
+  color: transparent;
+}
+
+.field label {
+  position: absolute;
+  left: 16px;
+  top: 15px;
+  color: var(--muted);
+  pointer-events: none;
+  transition: 0.2s ease;
+  font-size: 15px;
+}
+
+.field input:focus + label,
+.field input:not(:placeholder-shown) + label {
+  top: -9px;
+  left: 12px;
+  font-size: 12px;
+  color: var(--accent2);
+  background: #230000;
+  padding: 0 8px;
+  border-radius: 999px;
+}
+
+.pass-wrap {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.pass-wrap .field {
+  flex: 1;
+}
+
+.eye-btn {
+  width: 46px;
+  height: 46px;
+  border: 1px solid rgba(255,255,255,0.14);
+  background: rgba(255,255,255,0.04);
+  border-radius: 14px;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  color: var(--text);
+  flex-shrink: 0;
+}
+
+.actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+}
+
+.link {
+  color: var(--accent2);
+  text-decoration: none;
+}
+
+.btn {
+  width: 100%;
+  border: none;
+  border-radius: 16px;
+  padding: 15px;
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 1.8px;
+  color: white;
+  cursor: pointer;
+  background: linear-gradient(135deg, #ff3b3b, #8b0000);
+  box-shadow: 0 14px 30px rgba(255, 30, 30, 0.25);
+  transition: 0.2s;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.1);
+}
