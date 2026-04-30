@@ -45,7 +45,7 @@ $stmt = $employee->read();
             <a class="nav-link " href="../view/pedido.php"><i class="fas fa-square-poll-vertical me-2"></i> Pedidos</a>
             <a class="nav-link " href="../view/pago.php"><i class="fas fa-wallet me-2"></i> Pagos</a>
             <a class="nav-link " href="../view/garantia.php"><i class="fas fa-calendar me-2"></i> Garantias</a>>
-            <a class="nav-link text-danger mt-5" href="controllers/AuthController.php?action=logout">
+            <a class="nav-link text-danger mt-5" href="../controllers/AuthController.php?action=logout">
                 <i class="fas fa-sign-out-alt me-2"></i> Cerrar Sesión
             </a>
         </nav>
